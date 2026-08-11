@@ -8,14 +8,6 @@ spring:
         webflux:
           routes:
             - id: member-service
-              uri: lb://member-service
+              uri: http://member-service
               predicates:
                 - Path=/api/members/**
-
-      discovery:
-        locator:
-          enabled: false
-
-    kubernetes:
-      discovery:
-        enabled: true
