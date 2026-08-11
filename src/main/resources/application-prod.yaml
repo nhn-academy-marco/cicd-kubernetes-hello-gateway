@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: member-service
+              uri: lb://member-service
+              predicates:
+                - Path=/api/members/**
+
+      discovery:
+        locator:
+          enabled: false
+
+    kubernetes:
+      discovery:
+        enabled: true

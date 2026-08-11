@@ -1,0 +1,25 @@
+server:
+  port: 8000
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: member-service
+              uri: http://localhost:8100
+              predicates:
+                - Path=/api/members/**
+
+    kubernetes:
+      discovery:
+        enabled: false
+
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.reactive: DEBUG
+    reactor.netty.http.server: DEBUG
